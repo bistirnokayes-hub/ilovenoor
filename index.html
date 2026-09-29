@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>For Noor ❤️</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #050509;
+    color: white;
+    font-family: Georgia, serif;
+    overflow-x: hidden;
+}
+
+/* BACKGROUND */
+.background {
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    background:
+        radial-gradient(circle at 20% 20%, #42152f 0%, transparent 35%),
+        radial-gradient(circle at 80% 70%, #24163f 0%, transparent 35%),
+        #050509;
+}
+
+/* STARS */
+.stars {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+}
+
+.star {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: white;
+    border-radius: 50%;
+    opacity: .6;
+    animation: twinkle 3s infinite alternate;
+}
+
+@keyframes twinkle {
+    from { opacity: .15; }
+    to { opacity: 1; }
+}
+
+/* FLOATING HEARTS */
+.heart {
+    position: fixed;
+    bottom: -40px;
+    font-size: 20px;
+    animation: floatHeart 8s linear forwards;
+    opacity: .7;
+    pointer-events: none;
+    z-index: 10;
+}
+
+@keyframes floatHeart {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+    }
+
+    15% {
+        opacity: .8;
+    }
+
+    100% {
+        transform: translateY(-110vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* HERO */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 30px;
+}
+
+.hero-content {
+    animation: heroAppear 2s ease;
+}
+
+@keyframes heroAppear {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.small {
+    letter-spacing: 5px;
+    font-size: 12px;
+    opacity: .65;
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-size: clamp(55px, 16vw, 110px);
+    font-weight: normal;
+    letter-spacing: 3px;
+}
+
+.subtitle {
+    margin-top: 20px;
+    font-size: 18px;
+    opacity: .75;
+    font-style: italic;
+    line-height: 1.7;
+}
+
+.scroll {
+    margin-top: 70px;
+    opacity: .5;
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    50% {
+        transform: translateY(10px);
+    }
+}
+
+/* SECTIONS */
+section {
+    min-height: 100vh;
+    padding: 100px 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.section-title {
+    font-size: 38px;
+    font-weight: normal;
+    margin-bottom: 25px;
+}
+
+.section-text {
+    max-width: 650px;
+    line-height: 1.9;
+    color: #ccc;
+}
+
+/* MAIN PHOTO */
+.photo-container {
+    margin-top: 45px;
+    width: min(90vw, 420px);
+    height: 520px;
+    overflow: hidden;
+    border-radius: 22px;
+    box-shadow: 0 0 50px rgba(255, 70, 150, .18);
+    position: relative;
+}
+
+.photo-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 1s ease;
+}
+
+.photo-container:hover img {
+    transform: scale(1.08);
+}
+
+/* GALLERY */
+.gallery {
+    width: min(100%, 900px);
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+    margin-top: 45px;
+}
+
+.gallery img {
+    width: 100%;
+    height: 330px;
+    object-fit: cover;
+    border-radius: 18px;
+    opacity: 0;
+    transform: translateY(50px) scale(.96);
+    transition: opacity 1s ease, transform 1s ease;
+}
+
+.gallery img.show {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+.gallery img:hover {
+    transform: scale(1.04);
+}
+
+/* LETTER */
+.letter {
+    max-width: 700px;
+    margin-top: 40px;
+    padding: 40px 30px;
+    border: 1px solid rgba(255,255,255,.15);
+    border-radius: 20px;
+    background: rgba(255,255,255,.035);
+    backdrop-filter: blur(10px);
+    line-height: 2;
+    color: #ddd;
+}
+
+/* FINAL HEART */
+.final {
+    min-height: 100vh;
+}
+
+.big-heart {
+    font-size: 90px;
+    cursor: pointer;
+    animation: heartbeat 1.5s infinite;
+    filter: drop-shadow(0 0 25px rgba(255,50,100,.5));
+}
+
+@keyframes heartbeat {
+    0%, 100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.2);
+    }
+}
+
+/* HIDDEN MESSAGE */
+.hidden-message {
+    margin-top: 35px;
+    max-width: 600px;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: 1.2s ease;
+    pointer-events: none;
+}
+
+.hidden-message.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* FOOTER */
+footer {
+    padding: 30px;
+    text-align: center;
+    color: #666;
+    font-size: 13px;
+}
+
+/* MOBILE */
+@media (max-width: 600px) {
+
+    .gallery {
+        grid-template-columns: 1fr;
+    }
+
+    .gallery img {
+        height: 430px;
+    }
+
+    .photo-container {
+        height: 500px;
+    }
+
+    .section-title {
+        font-size: 32px;
+    }
+
+    .letter {
+        padding: 30px 22px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="background"></div>
+
+<div class="stars" id="stars"></div>
+
+<!-- HERO -->
+<section class="hero">
+
+    <div class="hero-content">
+
+        <div class="small">
+            THIS LITTLE WORLD IS FOR
+        </div>
+
+        <h1>Noor ❤️</h1>
+
+        <div class="subtitle">
+            "Somewhere between ordinary days,<br>
+            you became my favorite part of life."
+        </div>
+
+        <div class="scroll">
+            ↓<br>
+            Scroll slowly
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- HER PHOTO -->
+<section>
+
+    <h2 class="section-title">
+        The girl behind my smile
+    </h2>
+
+    <p class="section-text">
+        There are billions of people in this world,
+        but somehow, my heart decided to remember
+        one name a little differently.
+        <br><br>
+        Yours.
+    </p>
+
+    <div class="photo-container">
+        <img src="noor1.jpg" alt="Noor">
+    </div>
+
+</section>
+
+
+<!-- SEVEN PHOTOS -->
+<section>
+
+    <h2 class="section-title">
+        Little memories ❤️
+    </h2>
+
+    <p class="section-text">
+        Seven pictures.
+        <br>
+        A thousand memories.
+        <br>
+        And a story that is still being written.
+    </p>
+
+    <div class="gallery">
+
+        <img src="noor1.jpg" alt="Noor 1">
+        <img src="noor2.jpg" alt="Noor 2">
+        <img src="noor3.jpg" alt="Noor 3">
+        <img src="noor4.jpg" alt="Noor 4">
+        <img src="noor5.jpg" alt="Noor 5">
+        <img src="noor6.jpg" alt="Noor 6">
+        <img src="noor7.jpg" alt="Noor 7">
+
+    </div>
+
+</section>
+
+
+<!-- LETTER -->
+<section>
+
+    <h2 class="section-title">
+        A letter for you
+    </h2>
+
+    <div class="letter">
+
+        Dear Noor,
+
+        <br><br>
+
+        I don't know where life will take us.
+
+        <br><br>
+
+        Maybe someday we'll look back at these
+        days and laugh about how young we were.
+
+        <br><br>
+
+        But right now, I just want you to know
+        that meeting you became one of those little
+        things in life that I never want to forget.
+
+        <br><br>
+
+        I don't promise that everything will always
+        be perfect.
+
+        <br><br>
+
+        But I promise that the memories we make
+        will always mean something to me.
+
+        <br><br>
+
+        — Yours ❤️
+
+    </div>
+
+</section>
+
+
+<!-- FINAL SURPRISE -->
+<section class="final">
+
+    <div class="small">
+        ONE LAST THING
+    </div>
+
+    <div class="big-heart" id="heart">
+        ❤️
+    </div>
+
+    <div class="hidden-message" id="message">
+
+        <h2 class="section-title">
+            If you ever forget...
+        </h2>
+
+        <p class="section-text">
+
+            Look at this little website again.
+
+            <br><br>
+
+            Somewhere in this world,
+            there is a boy who once looked at you
+            and thought...
+
+            <br><br>
+
+            <strong>
+                "Yeah... she's special."
+            </strong>
+
+            <br><br>
+
+            And he still does.
+
+        </p>
+
+    </div>
+
+</section>
+
+
+<footer>
+    Made with ❤️ for Noor
+</footer>
+
+
+<script>
+
+/* STARS */
+
+const stars = document.getElementById("stars");
+
+for (let i = 0; i < 120; i++) {
+
+    const star = document.createElement("div");
+
+    star.className = "star";
+
+    star.style.left =
+        Math.random() * 100 + "%";
+
+    star.style.top =
+        Math.random() * 100 + "%";
+
+    star.style.animationDelay =
+        Math.random() * 3 + "s";
+
+    stars.appendChild(star);
+}
+
+
+/* FLOATING HEARTS */
+
+function createHeart() {
+
+    const heart =
+        document.createElement("div");
+
+    heart.className = "heart";
+
+    heart.innerHTML =
+        Math.random() > .5 ? "❤️" : "♡";
+
+    heart.style.left =
+        Math.random() * 100 + "%";
+
+    heart.style.animationDuration =
+        (5 + Math.random() * 5) + "s";
+
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, 10000);
+}
+
+setInterval(createHeart, 1300);
+
+
+/* PHOTO REVEAL */
+
+const images =
+    document.querySelectorAll(".gallery img");
+
+const observer =
+    new IntersectionObserver(
+
+        entries => {
+
+            entries.forEach(entry => {
+
+                if (entry.isIntersecting) {
+
+                    entry.target
+                        .classList
+                        .add("show");
+
+                }
+
+            });
+
+        },
+
+        {
+            threshold: .15
+        }
+
+    );
+
+images.forEach(img => {
+    observer.observe(img);
+});
+
+
+/* FINAL HEART */
+
+const heart =
+    document.getElementById("heart");
+
+const message =
+    document.getElementById("message");
+
+heart.addEventListener("click", () => {
+
+    message.classList.add("show");
+
+    for (let i = 0; i < 20; i++) {
+
+        setTimeout(() => {
+            createHeart();
+        }, i * 80);
+
+    }
+
+});
+
+</script>
+
+</body>
+</html>
